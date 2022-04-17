@@ -5,14 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/03/25 19:33:19 by mcouppe           #+#    #+#              #
-#    Updated: 2022/03/25 19:36:20 by mcouppe          ###   ########.fr        #
+#    Created: 2022/02/07 16:46:04 by mcouppe           #+#    #+#              #
+#    Updated: 2022/02/07 16:59:30 by mcouppe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minitalk
+SERVER = server
 
-SRC =
+CLIENT = client
+
+SRC = 
 
 OBJ = $(SRC:.c=.o)
 
@@ -20,6 +22,7 @@ CC = clang
 
 CFLAGS = -Wall -Werror -Wextra
 
-RM = rm -f
+RM = /bin/rm -f
 
-all : $(NAME)
+all : client server
+
