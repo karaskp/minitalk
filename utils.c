@@ -6,15 +6,15 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 20:05:35 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/17 20:09:18 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/18 11:05:41 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
+void	ft_putchar_fd(char c, int fd)
 {
-	write(1, &c, 1);
+	write(fd, &c, 1);
 }
 
 int	ft_strlen(char *str)
@@ -29,7 +29,27 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-void	ft_putstr(char *str)
+void	ft_putstr_fd(char *str, int fd)
 {
-	write(1, str, (ft_strlen(str));
+	write(fd, str, (ft_strlen(str));
 }
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	long int	nbr;
+
+	nbr = n;
+	if (n < 0)
+	{
+		nbr *= -1;
+		ft_putchar_fd('-', fd);
+	}
+	if (nbr < 10)
+		ft_putchar_fd((nbr + '0'), fd);
+	if (nbr >= 10)
+	{
+		ft_putnbr_fd((nbr / 10), fd);
+		ft_putchar_fd(((nbr % 10) + '0'), fd);
+	}
+}
+

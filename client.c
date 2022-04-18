@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:00:04 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/17 20:04:05 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/18 11:00:55 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,3 @@ char	*str_client(pid_t pid_server, char	*to_send)
  * */
 }
 
-int main(int ac, char **av)
-{
-	pid_t	pid_server;
-
-	if (ac == 2)
-		
-}
