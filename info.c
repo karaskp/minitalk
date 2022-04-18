@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   info.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:31:37 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/18 13:44:24 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/18 17:53:59 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,15 @@
 
 	(linux ne met pas les signaux en file d'attente qd on a deja un 
 	signal en attente du meme type)
+
+
+****************************************************************************************
+	UPDATE
+
+***************************************************************************************
+	kill(pid_du_processus, num_du_sign)
+	(num_du_sign) = SIGUSR1ou2
+
+	signal(num_du_signal, fonction) permet de definir un traitement spe au signal
+	
 */

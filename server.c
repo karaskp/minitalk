@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/18 17:27:47 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/18 17:55:27 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 void	ft_server(int signum)
 {
 //	send signal with
-	signal(SIGUSR1, ft_server);
+	//signal(SIGUSR1, ft_server);
 	ft_printf("in ft_server ! signum = %d\n", signum);
 }
 
@@ -46,11 +46,11 @@ int	main(void)
 //	s_sigact.sa_flags = 0;
 //	sigaction(SIGUSR1, &s_sigact, NULL);
 //	sigaction(SIGUSR2, &s_sigact, NULL);
-	signal(SIGUSR2, ft_client);
+//	signal(SIGUSR2, ft_client);
 	signal(SIGUSR1, ft_server);
 //		kill(pid_serv, SIGUSR1);
 //		ft_printf("parent waiting for answer\n");
 	while (1)
-		pause();
+		sleep(5);
 	return (0);
 }
