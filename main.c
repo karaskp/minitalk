@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:31:37 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/18 11:47:29 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/18 12:10:54 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@
 	exit
 	
 	2 exec = client et server
-	1 globale par exec (1 client 1 server)
+	1 globale autorisée par exec (1 client 1 server)
 	
 	server = lancé en premier, affiche son PID
 	client = 2 param : le PID du server, une str a transmettre
