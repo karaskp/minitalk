@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/07 17:00:04 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/18 12:14:52 by mcouppe          ###   ########.fr       */
+/*   Created: 2022/04/18 12:11:32 by mcouppe           #+#    #+#             */
+/*   Updated: 2022/04/18 12:16:19 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#ifndef MINITALK_H
+# define MINITALK_H
 
-char	*str_client(pid_t pid_server, char	*to_send)
-{
-/*	envoyer la char to_send au pid_server
- *
- * */
-}
+# include <unistd.h>
+# include <stdlib.h>
+# include <signal.h>
+# include <sys/types.h>
+# include <stddef.h>
+# include "ft_printf/ft_printf.h"
 
+void	ft_putchar_fd(char c, int fd);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putstr_fd(char *str, int fd);
+
+int	ft_strlen(char *str);

@@ -6,14 +6,11 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/18 11:47:25 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/18 12:14:24 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <stdlib.h>
+#include "minitalk.h"
 
 pid_t	getpid_server()
 {

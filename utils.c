@@ -6,11 +6,11 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 20:05:35 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/18 11:05:41 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/18 12:20:37 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "minitalk.h"
 
 void	ft_putchar_fd(char c, int fd)
 {
@@ -31,7 +31,10 @@ int	ft_strlen(char *str)
 
 void	ft_putstr_fd(char *str, int fd)
 {
-	write(fd, str, (ft_strlen(str));
+	if (!s)
+		write(fd, "(null)", 6);
+	else
+		write(fd, str, (ft_strlen(str));
 }
 
 void	ft_putnbr_fd(int n, int fd)
