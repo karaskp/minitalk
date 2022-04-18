@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/18 16:39:22 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/18 17:27:47 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,18 @@
 
 void	ft_server(int signum)
 {
-
-/*	send signal with
-	kill(getpid(), SIGUSR1);*/
-	ft_printf("Signal caught : %d\n", signum);
-	exit(1);
-	
+//	send signal with
+	signal(SIGUSR1, ft_server);
+	ft_printf("in ft_server ! signum = %d\n", signum);
 }
 
+/*void	sig_child(int signum)
+{
+	ft_printf("signal received from parent : %d\n", signum);
+	sleep(1);
+	kill(getppid(), SIGUSR1);
+}
+*/
 int	main(void)
 {
 	int			pid_serv;
@@ -37,18 +41,16 @@ int	main(void)
 	
 
 	pid_serv = (int)getpid();
-	//(converti en str, il faut un malloc de 13bytes (12 pr les digit et 1 pour \0)) 
-	// avec du coup free de la mem non utilisée
 	ft_printf("PID server : %d\n", pid_serv);
-//	sigemptyset(&s_sigact.sa_mask);
 //	s_sigact.sa_sigaction = ft_server;
 //	s_sigact.sa_flags = 0;
 //	sigaction(SIGUSR1, &s_sigact, NULL);
 //	sigaction(SIGUSR2, &s_sigact, NULL);
+	signal(SIGUSR2, ft_client);
 	signal(SIGUSR1, ft_server);
-//	signal(SIGUSR2, ft_server);
-	kill(pid_serv, SIGUSR1);
-/*	while (1)
-		sleep(1);*/
+//		kill(pid_serv, SIGUSR1);
+//		ft_printf("parent waiting for answer\n");
+	while (1)
+		pause();
 	return (0);
 }

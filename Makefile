@@ -6,7 +6,7 @@
 #    By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/07 16:46:04 by mcouppe           #+#    #+#              #
-#    Updated: 2022/04/18 16:28:36 by mcouppe          ###   ########.fr        #
+#    Updated: 2022/04/18 17:37:01 by mcouppe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME = server
 
 SRC = ft_printf/ft_print_hexa.c ft_printf/ft_print_int.c ft_printf/ft_print_maj_hexa.c \
 	ft_printf/ft_print_p.c ft_printf/ft_print_un.c ft_printf/ft_printf.c ft_printf/utils.c \
-	server.c utils.c  
+	server.c utils.c
 
 OBJ = $(SRC:.c=.o)
 
