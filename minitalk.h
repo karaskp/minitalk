@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 12:11:32 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/18 12:16:19 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/18 14:24:29 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *str, int fd);
 
+int	ft_atoi(char *str);
 int	ft_strlen(char *str);
