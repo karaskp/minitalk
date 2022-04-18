@@ -6,18 +6,23 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/18 14:26:08 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/18 15:24:09 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	ft_server(int signum, siginfo_t *info, void *idk)
+/*void	ft_server(int signum, siginfo_t *info, void *idk)
 {
 	pid_t	pid_client;
 
 	(void)idk;
 	pid_client = 0;
+}*/
+
+void	ft_server(int signum)
+{
+	
 }
 
 int	main(void)
