@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 20:05:35 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/18 14:23:56 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/18 16:29:21 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int	ft_strlen(char *str)
 
 void	ft_putstr_fd(char *str, int fd)
 {
-	if (!s)
+	if (!str)
 		write(fd, "(null)", 6);
 	else
-		write(fd, str, (ft_strlen(str));
+		write(fd, str, (ft_strlen(str)));
 }
 
 void	ft_putnbr_fd(int n, int fd)

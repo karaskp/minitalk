@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/18 15:24:09 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/18 16:39:22 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,18 @@
 
 void	ft_server(int signum)
 {
+
+/*	send signal with
+	kill(getpid(), SIGUSR1);*/
+	ft_printf("Signal caught : %d\n", signum);
+	exit(1);
 	
 }
 
 int	main(void)
 {
 	int			pid_serv;
-	struct	sigaction	s_sigact;
+//	struct	sigaction	s_sigact;
 	
 
 	pid_serv = (int)getpid();
@@ -41,5 +46,9 @@ int	main(void)
 //	sigaction(SIGUSR1, &s_sigact, NULL);
 //	sigaction(SIGUSR2, &s_sigact, NULL);
 	signal(SIGUSR1, ft_server);
-	signal(SIGUSR2, ft_server);
+//	signal(SIGUSR2, ft_server);
+	kill(pid_serv, SIGUSR1);
+/*	while (1)
+		sleep(1);*/
+	return (0);
 }

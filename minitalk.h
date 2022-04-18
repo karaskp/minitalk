@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 12:11:32 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/18 14:24:29 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/18 16:22:09 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,5 @@ void	ft_putstr_fd(char *str, int fd);
 
 int	ft_atoi(char *str);
 int	ft_strlen(char *str);
+
+#endif
