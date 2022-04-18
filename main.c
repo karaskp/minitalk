@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:31:37 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/18 12:10:54 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/18 13:44:24 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 				void	(*sa_sigaction)(int, siginfo_t *, void *);
 				sigset_t	sa_mask;
 				int	sa_flags;
-				void	(*sa_restorer)(void);
 			}
 		sa_flags = set of flags modifying the behaviour of signal formed by bitwise 
 				or 0 or a list of flags
