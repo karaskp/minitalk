@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/19 13:48:51 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/19 15:25:03 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,62 +42,29 @@ char	*ft_addonechar(char *old, int bit)
 	return (new);
 }
 
-char	ft_binarytoascii(char *strinbits)
-{
-	int	result;
-	int	count;
-	int	i;
-	char	*strinascii;
-
-	i = 0;
-	count = 0;
-	result = 0;
-	while (strinbits[i])
-	{
-		if (strinbits[i] == '1')
-		{
-			while (count < i)
-			{
-				result += (2 * 2);
-				count++;
-			}
-		}
-		count = 0;
-		i++;
-	}
-	ft_printf("char in decimal = %d\n", result);
-	return (result + '0');
-}
-
 void	ft_server(int signum)
 {
-	static char	*strtobits;
+	static char	*strinbits;
 	static int	countbit;
 
 	countbit++;
-	if (strtobits == NULL)
+	if (strinbits == NULL)
 	{
 		countbit = 1;
-		strtobits = malloc(sizeof(char) * 1);
-		if (!strtobits)
+		strinbits = malloc(sizeof(char) * 1);
+		if (!strinbits)
 			return ;
-		strtobits = "";
+		strinbits = "";
 	}
 	if (signum == SIGUSR1)
-		strtobits = ft_addonechar(strtobits, 1);
+		strinbits = ft_addonechar(strinbits, 1);
 	else
-		strtobits = ft_addonechar(strtobits, 0);
-/*
-	every 8 bits == 1 char in ascii
-*/
+		strinbits = ft_addonechar(strinbits, 0);
 	if (countbit == 8)
 	{
-		/*
-			convert back to ascii
-			print this char to check
-			free strtobits;
-			countbit = 0;
-		*/
+		ft_printf("%c",ft_binarytoascii(strinbits, 0));
+		free(strinbits);
+		countbit = 0;
 	}
 }
 

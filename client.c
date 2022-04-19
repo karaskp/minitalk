@@ -6,11 +6,16 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:00:04 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/19 13:19:51 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/19 15:31:09 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+/*
+	sigusr1 == 1
+	sigusr2 == 0
+*/
 
 void	ft_sendback(int pid, char *strtobits)
 {
