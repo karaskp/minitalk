@@ -21,22 +21,26 @@ char	ft_binarytoascii(char *strinbits)
 	i = ft_strlen(strinbits);
 	power = 0;
 	count = 0;
-	result = 2;
+	result = 1;
 	while (i >= 0)
 	{
 		if (strinbits[i] == '1')
 		{
 			count = (power - 1);
-			while (count >= 0)
+			while (count > 0)
 			{
 				printf("here result = %d, count = %d, power = %d\n", result, count, power);
-				result += (2 * 2) ;
+				//result = 2 ;
+				result *=  2;
 				count--;
 			}
 		}
 		power++;
 		i--;
 	}
+/*
+	on y est presk yay
+*/
 	printf("char in decimal = %d\n", result);
 	return (result + '0');
 }
