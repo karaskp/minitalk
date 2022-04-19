@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/19 12:52:54 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/19 13:19:26 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,13 @@ char	*ft_addonechar(char *old, int bit)
 	return (new);
 }
 
+char	*ft_binarytoascii(char *strinbits)
+{
+	int	power;
+	int	i;
+	char	*strinascii;
+}
+
 void	ft_server(int signum)
 {
 	static char	*strtobits;
@@ -56,17 +63,19 @@ void	ft_server(int signum)
 			return ;
 		strtobits = "";
 	}
+	if (signum == SIGUSR1)
+		strtobits = ft_addonechar(strtobits, 1);
 	else
-	{
-		if (signum == SIGUSR1)
-			strtobits = ft_addonechar(strtobits, 1);
-		else
-			strtobits = ft_addonechar(strtobits, 0);
-	}
+		strtobits = ft_addonechar(strtobits, 0);
+/*
+	every 8 bits == 1 char in ascii
+*/
 	if (countbit == 8)
 	{
 		/*
-			free et print strtobits apres avoir convert back to ascii
+			convert back to ascii
+			print this char to check
+			free strtobits;
 			countbit = 0;
 		*/
 	}
