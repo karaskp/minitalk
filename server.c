@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/19 13:19:26 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/19 13:48:51 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,31 @@ char	*ft_addonechar(char *old, int bit)
 	return (new);
 }
 
-char	*ft_binarytoascii(char *strinbits)
+char	ft_binarytoascii(char *strinbits)
 {
-	int	power;
+	int	result;
+	int	count;
 	int	i;
 	char	*strinascii;
+
+	i = 0;
+	count = 0;
+	result = 0;
+	while (strinbits[i])
+	{
+		if (strinbits[i] == '1')
+		{
+			while (count < i)
+			{
+				result += (2 * 2);
+				count++;
+			}
+		}
+		count = 0;
+		i++;
+	}
+	ft_printf("char in decimal = %d\n", result);
+	return (result + '0');
 }
 
 void	ft_server(int signum)
