@@ -10,44 +10,39 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-char	ft_binarytoascii(char *strinbits)
+char	ft_binarytoascii(char *strinbits, int power)
 {
 	int	result;
-	int	power;
-	int	count;
+	int	power_tmp;
+	int	result_tmp;
 	int	i;
-//	char	*strinascii;
 
-	i = ft_strlen(strinbits);
-	power = 0;
-	count = 0;
-	result = 1;
+	i = (ft_strlen(strinbits) - 1);
+	result = 0;
+	result_tmp = 0;
 	while (i >= 0)
 	{
 		if (strinbits[i] == '1')
 		{
-			count = (power - 1);
-			while (count > 0)
-			{
-				printf("here result = %d, count = %d, power = %d\n", result, count, power);
-				//result = 2 ;
-				result *=  2;
-				count--;
-			}
+			power_tmp = power;
+			if (power == 0 )
+				result = 1;
+			else
+				result_tmp = 1;
+			while (power_tmp-- > 0)
+				result_tmp *=  2;
+			result += result_tmp;
 		}
 		power++;
 		i--;
 	}
-/*
-	on y est presk yay
-*/
-	printf("char in decimal = %d\n", result);
-	return (result + '0');
+	return (result);
 }
 
 int main(int ac, char **av)
 {
 	(void)ac;
-	printf("char final = %c\n", ft_binarytoascii(av[1]));
+
+	printf("char final = %c\n", ft_binarytoascii(av[1], 0));
 	return (0);
 }
