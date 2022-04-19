@@ -6,37 +6,46 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:00:04 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/18 17:32:27 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/19 12:59:04 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	ft_client(int signum)
+void	ft_sendback(int pid, char *strtobits)
 {
-/*	envoyer la char to_send au pid_server
- *
- * */
-	ft_printf("inside client ! signum = %d\n", signum);
+	int	i;
+
+	i = 0;
+	if (!strtobits)
+	{
+		ft_printf("Error\nSignal lost\n");
+		exit(EXIT_SUCCESS);
+		return ;
+	}
+	while (strtobits[i] != '\0')
+	{
+		if (strtobits[i] == 1)
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		i++;
+	}
 }
 
 int	main(int ac, char **av)
 {
 	int	pid;
-	char	*str;
+	char	*strtobits;
 	int	i;
 
 	(void)ac;
 	i = 0;
-	str =  "Hello World";
 	pid = ft_atoi(av[1]);
-	kill(pid, SIGUSR2);
-	while (str[i] != '\0')
-	{
-		ft_printf("%c", str[i]);
-		kill(pid, SIGUSR1);
-	}
-	ft_printf("\n");
-	kill(pid, SIGTERM);
+	/*
+		convert back to binary strtobits; (av2)
+		
+	*/
+	//send back to server with ft_sendback(pid, strtobits);
 	return (0);
 }
