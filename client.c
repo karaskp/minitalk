@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:00:04 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/19 15:51:33 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/19 16:45:33 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ int	main(int ac, char **av)
 	(void)ac;
 	i = 0;
 	pid = ft_atoi(av[1]);
-	strtobits = backtobinary(av[2],);
+	strtobits = asciitobinary(av[2],);
+	/*
+		y'a un pblm parce que jkompren ap si jrecois un str ou un char
+	*/
 	/*
 		convert back to binary strtobits; (av2)
 		

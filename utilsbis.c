@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:16:30 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/19 15:51:30 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/19 16:53:49 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,37 +41,59 @@ char	ft_binarytoascii(char *strinbits, int power)
 	return (result);
 }
 
-char	**asciitobinary(char *strtobits)
+char	*asciitobinary(char *strtobits)
 {
 	int	i;
 	int	j;
-	int	size;
-	char	**bitstr;
+/*
+	il faut peut etre que bitstr soit une static
+*/
+	char	*bitstr;
 
 	i = 0;
-	size = (ft_strlen(strtobits) * 8);
-	
-	bitstr = malloc(sizeof(char *) * size);
+	if (strtobits == NULL)
+		return (NULL);
+	bitstr = malloc(sizeof(char) * (8 * ft_strlen(strtobits)));
 	if (!bitstr)
 		return (NULL);
-	while (strtobits[i])
+	while (strtobits[i] != '\0')
 	{
-		bitstr[j] = malloc(sizeof(char) * 8 + 1);
-		if (!bitstr[j])
-			return (NULL);
-		bitstr[j] = chartobinary(strtobits[i]);
+		bitstr = chartobinary(strtobits[i], bitstr);
+		/*
+			ici il faudrait que bitstr soit += chartobinary 
+			ou alors tab de char ** qu'on join apres
+		*/
 		i++;
+		j++;
 	}
+	bitstr[j] = NULL;
 	free(strtobits);
 	return (bitstr);
 }
 
-char	*chartobinary(char c)
+char	*chartobinary(char c, char *binarystr)
 {
+	int	i;
+	int	nbr;
+/*
+	ou alors un truc qui test ici si binary == NULL ou non et si non on ajoute a la fin
+*/
+	nbr = (int)c;
+	i = 0;
 	if (c < 32 || c > 127)
 	{
 		ft_printf("error with char\n");
 		return (NULL);
 	}
-	
+	while (nbr > 0 && i < 8)
+	{
+		if (nbr % 2 == 1)
+			binarystr[i] = '1';
+		else
+			binarystr[i] = '0';
+		i++;
+		nbr /= 2;
+	}
+	binarystr[i] = '\0';
+	return (binarystr);
 }
