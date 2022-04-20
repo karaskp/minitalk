@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 12:11:32 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/20 17:17:01 by mcouppe          ###   ########.fr       */
+/*   Created: 2021/11/22 15:04:40 by mcouppe           #+#    #+#             */
+/*   Updated: 2021/12/01 15:21:11 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <signal.h>
-# include <sys/types.h>
-# include <stddef.h>
-# include "libft/libft.h"
+void	*ft_memset(void *s, int c, size_t n)
+{
+	unsigned long	i;
+	char			d;
 
-void	ft_sendback(int pid, char *strtobits);
-void	ft_server(int signum);
+	d = c;
+	i = 0;
+	while (i < n)
+	{
+		((char *)s)[i] = d;
+		i++;
+	}
+	return (&(((char *)s)[0]));
+}
+/*
+#include <string.h>
+#include <stdio.h>
 
-
-char	*ft_addonechar(char *old, int bit);
-
-#endif
+int	main(int ac, char **av)
+{
+	(void)ac;
+	printf("mine %s\n", (char *)ft_memset(av[1], 65, 4));
+	printf("lib %s",(char *) memset(av[2], 65, 4));
+	return (0);
+}*/

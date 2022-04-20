@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 12:11:32 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/20 17:17:01 by mcouppe          ###   ########.fr       */
+/*   Created: 2021/11/22 15:18:43 by mcouppe           #+#    #+#             */
+/*   Updated: 2022/04/20 17:22:15 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <signal.h>
-# include <sys/types.h>
-# include <stddef.h>
-# include "libft/libft.h"
+char	*ft_strdup(char *s)
+{
+	int			i;
+	char		*dest;
 
-void	ft_sendback(int pid, char *strtobits);
-void	ft_server(int signum);
-
-
-char	*ft_addonechar(char *old, int bit);
-
-#endif
+	i = 0;
+	dest = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (dest == NULL)
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		dest[i] = s[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utilsbis.c                                         :+:      :+:    :+:   */
+/*   ft_binaryconvert.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:16:30 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/20 13:46:33 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/20 17:31:22 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
 char	ft_binarytoascii(char *strinbits, int power)
 {
@@ -77,11 +77,11 @@ char	*chartobinary(char c, char *binarystr)
 */
 	nbr = (int)c;
 	i = 0;
-	if (c < 32 || c > 127)
+/*	if (c < 32 || c > 127)
 	{
 		ft_printf("error with char\n");
 		return (NULL);
-	}
+	}*/
 	while (nbr > 0 && i < 8)
 	{
 		if (nbr % 2 == 1)

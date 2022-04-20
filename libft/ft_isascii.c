@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 12:11:32 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/20 17:17:01 by mcouppe          ###   ########.fr       */
+/*   Created: 2021/11/22 15:01:55 by mcouppe           #+#    #+#             */
+/*   Updated: 2021/11/29 15:31:14 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <signal.h>
-# include <sys/types.h>
-# include <stddef.h>
-# include "libft/libft.h"
-
-void	ft_sendback(int pid, char *strtobits);
-void	ft_server(int signum);
-
-
-char	*ft_addonechar(char *old, int bit);
-
-#endif
+int	ft_isascii(int c)
+{
+	if (c >= 0 && c <= 127)
+		return (1);
+	else
+		return (0);
+}
+/*#include <stdio.h>
+#include <ctype.h>
+int	main()
+{
+	printf("mine : %d\n", ft_isascii(32));
+        printf("lib : %d\n", ft_isascii(32));
+        printf("mine : %d\n", ft_isascii(250));
+        printf("lib : %d\n", ft_isascii(250));
+	return (0);
+}*/

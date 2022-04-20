@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 12:11:32 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/20 17:17:01 by mcouppe          ###   ########.fr       */
+/*   Created: 2021/11/22 15:12:05 by mcouppe           #+#    #+#             */
+/*   Updated: 2022/04/20 17:25:22 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <signal.h>
-# include <sys/types.h>
-# include <stddef.h>
-# include "libft/libft.h"
+int	ft_strlcpy(char *dst, char *src, int size)
+{
+	int	i;
 
-void	ft_sendback(int pid, char *strtobits);
-void	ft_server(int signum);
-
-
-char	*ft_addonechar(char *old, int bit);
-
-#endif
+	i = 0;
+	if (size <= 0)
+		return (ft_strlen(src));
+	while (src[i] != '\0' && (i < (size - 1)))
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (ft_strlen(src));
+}
