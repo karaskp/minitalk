@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:16:30 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/19 16:53:49 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/20 13:46:33 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,7 @@ char	ft_binarytoascii(char *strinbits, int power)
 char	*asciitobinary(char *strtobits)
 {
 	int	i;
-	int	j;
-/*
-	il faut peut etre que bitstr soit une static
-*/
+//	int	j;
 	char	*bitstr;
 
 	i = 0;
@@ -64,9 +61,9 @@ char	*asciitobinary(char *strtobits)
 			ou alors tab de char ** qu'on join apres
 		*/
 		i++;
-		j++;
+	//	j++;
 	}
-	bitstr[j] = NULL;
+	//bitstr[j] = NULL;
 	free(strtobits);
 	return (bitstr);
 }

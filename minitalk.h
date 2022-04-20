@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 12:11:32 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/19 16:53:08 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/04/20 13:45:17 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ char	ft_binarytoascii(char *strinbits, int power);
 
 char	*chartobinary(char c, char *binarystr);
 char	*ft_addonechar(char *old, int bit);
+char	*asciitobinary(char *strtobits);
 
-char	**asciitobinary(char *strtobits);
 int	ft_atoi(char *str);
 int	ft_strlen(char *str);
 
