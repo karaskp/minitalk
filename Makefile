@@ -6,13 +6,11 @@
 #    By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/07 16:46:04 by mcouppe           #+#    #+#              #
-#    Updated: 2022/04/20 13:44:01 by mcouppe          ###   ########.fr        #
+#    Updated: 2022/04/21 17:11:00 by mcouppe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SERVER = server
-
-#NAME = server
 
 CLIENT = client
 
@@ -32,14 +30,17 @@ RM = rm -f
 
 all :  $(SERVER) $(CLIENT)
 
+libft : 
+	make -C libft
+
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(SERVER) : $(OBJ)
-	$(CC) $(OBJ) $(CFLAGS) -o $(SERVER)
+$(SERVER) : server.o libft
+	 $(CC) $(CFLAGS) -o $@ $< -Llibft -lft
 
-$(CLIENT) : $(OBJ)
-	$(CC) $(OBJ) $(CFLAGS) -o $(CLIENT)
+$(CLIENT) : client.o libft
+	$(CC) $(CFLAGS) -o $@ $< -Llibft -lft
 
 clean :
 	$(RM) $(OBJ)
@@ -49,4 +50,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean re libft
