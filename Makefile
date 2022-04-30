@@ -6,7 +6,7 @@
 #    By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/07 16:46:04 by mcouppe           #+#    #+#              #
-#    Updated: 2022/04/21 17:11:00 by mcouppe          ###   ########.fr        #
+#    Updated: 2022/04/30 15:14:01 by mcouppe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ $(SERVER) : server.o libft
 $(CLIENT) : client.o libft
 	$(CC) $(CFLAGS) -o $@ $< -Llibft -lft
 
+# need clean libft aswell
 clean :
 	$(RM) $(OBJ)
 
