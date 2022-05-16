@@ -21,7 +21,7 @@
 # include "libft/libft.h"
 
 void	ft_sendback(int pid, char *strtobits);
-void	ft_server(int signum);
+void	ft_server(int signumm, siginfo_t *siginfo, void *empty);
 
 
 char	*ft_addonechar(char *old, int bit);
