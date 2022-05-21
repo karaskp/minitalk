@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/05/21 14:39:37 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/05/21 14:59:30 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void    ft_server(int signum, siginfo_t *siginfo, void *empty)
     power += 1;
     if (power == 8)
     {
-        ft_putchar_fd(ascii, 1);
+        ft_printf("%c", ascii);
         power = 0;
         ascii = 0;
     }
@@ -47,9 +47,7 @@ int main(int argc, char **argv)
     (void)argv;
     if (argc != 1)
         ft_error("Error arguments\n");
-    write(1, "Server started!\nPID: ", 21);
-    ft_putnbr_fd(getpid(), 1);
-    write(1, "\n", 1);
+    ft_printf("%d\n", getpid());
     sigemptyset(&sigac.sa_mask);
     //sigaddset(&sigac.sa_mask, SIGINT);
     //sigaddset(&sigac.sa_mask, SIGQUIT);
