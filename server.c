@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/19 15:25:03 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/05/21 14:39:37 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,20 @@ void    ft_server(int signum, siginfo_t *siginfo, void *empty)
     static int  ascii = 0;
     static int  power = 0;
 
-    (void)unused;
+    (void)empty;
     if (signum == SIGUSR1)
         ascii += (128 >> power);
     power += 1;
     if (power == 8)
     {
-        ft_putchar(ascii);
+        ft_putchar_fd(ascii, 1);
         power = 0;
         ascii = 0;
     }
     if (siginfo->si_pid == 0)
-        ft_errors("Server didn't get client's PID\n");
+        ft_error("Server didn't get client's PID\n");
     if (kill(siginfo->si_pid, SIGUSR2) == -1)
-        ft_errors("Error in returning signal!\n");
+        ft_error("Error in returning signal!\n");
 }
 
 int main(int argc, char **argv)
@@ -46,9 +46,9 @@ int main(int argc, char **argv)
 
     (void)argv;
     if (argc != 1)
-        errors("Error arguments\n");
+        ft_error("Error arguments\n");
     write(1, "Server started!\nPID: ", 21);
-    ft_putnbr(getpid());
+    ft_putnbr_fd(getpid(), 1);
     write(1, "\n", 1);
     sigemptyset(&sigac.sa_mask);
     //sigaddset(&sigac.sa_mask, SIGINT);
@@ -56,9 +56,9 @@ int main(int argc, char **argv)
     sigac.sa_flags = SA_SIGINFO;
     sigac.sa_sigaction = ft_server;
     if ((sigaction(SIGUSR1, &sigac, 0)) == -1)
-        ft_errors("Error sigaction\n");
+        ft_error("Error sigaction\n");
     if ((sigaction(SIGUSR2, &sigac, 0)) == -1)
-        ft_errors("Error sigaction\n");
+        ft_error("Error sigaction\n");
     while (1)
         sleep(5);
     return (0);
