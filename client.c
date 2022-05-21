@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:00:04 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/05/21 15:08:06 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/05/21 17:12:45 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,55 +16,7 @@
 	sigusr1 == 1
 	sigusr2 == 0
 */
-int received; //see how to handle this
-
-void	ft_sendcbyc(char c, int pid)
-{
-	int		i;
-
-	i = 128; //see why
-	while (i >= 1)
-	{
-		if (received == 1)
-		{
-			if (i & c)
-			{
-				if (kill(pid, SIGUSR1) == -1)
-					ft_error("Issue while sending signal\n");
-				else if (kill(pid, SIGUSR2) == -1)
-					ft_error("Issue while sending signal\n");
-			}
-			i /= 2;
-			received = 0;
-		}
-		usleep(1000);// --> it's maybe there we have to input usleep 1000
-	}
-}
-
-int ft_client(int pid, char *str)
-{
-  int i;
-  
-  i = 0;
-  while (str[i])
-  {
-      ft_sendcbyc(str[i], pid);
-      i++;
-  }
-  return (0);
-}
-
-void    ft_proto(int signum, siginfo_t *siginfo, void *context)
-{
-    (void)context;
-    (void)siginfo;
-    (void)signum;
-    received = 1;
-    ft_printf("received signal !\n");
-    return ;
-}
-
-int main(int argc, char **argv)
+/*int main(int argc, char **argv)
 {
     struct sigaction    sigac;
 
@@ -86,28 +38,22 @@ int main(int argc, char **argv)
     while (1)
         sleep (5);
     return (0);
-}
+}*/
 
-/*
-void	ft_sendback(int pid, char *strtobits)
+
+void	ft_sendback(int pid, char c)
 {
 	int	i;
 
-	i = 0;
-	if (!strtobits)
+	i = -1;
+	while (++i < 9)
 	{
-		ft_printf("Error\nSignal lost\n");
-		exit(EXIT_SUCCESS);
-		return ;
-	}
-	while (strtobits[i] != '\0')
-	{
-		if (strtobits[i] == 1)
-			kill(pid, SIGUSR1);
-		else
+		if (c & 0x01)
 			kill(pid, SIGUSR2);
-		i++;
-		usleep(80);
+		else
+			kill(pid, SIGUSR1);
+		c = c >> 1;
+		usleep(100);
 	}
 }
 
@@ -117,11 +63,15 @@ int	main(int ac, char **av)
 	char	*strtobits;
 	int	i;
 
-	(void)ac;
-	i = 0;
+	if (ac != 3)
+		return (-1);
+	i = -1;
 	pid = ft_atoi(av[1]);
+	if (pid <= 0)
+		return (-1);
 	strtobits = asciitobinary(av[2]);
+	while (strtobits[++i])
+		ft_sendback(pid, strtobits[i]);
 	//send back to server with ft_sendback(pid, strtobits);
-	ft_sendback(pid, strtobits);
-	return (0);
-}*/
+	ft_sendback(pid, strtobits[i]);
+}

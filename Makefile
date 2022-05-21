@@ -6,7 +6,7 @@
 #    By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/07 16:46:04 by mcouppe           #+#    #+#              #
-#    Updated: 2022/04/30 15:14:01 by mcouppe          ###   ########.fr        #
+#    Updated: 2022/05/21 17:17:48 by mcouppe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ $(CLIENT) : client.o libft
 
 # need clean libft aswell
 clean :
-	$(RM) $(OBJ)
+	$(RM) $(OBJ) ; cd libft/ ; make fclean
 
 fclean : clean
 	$(RM) $(SERVER) $(CLIENT)
