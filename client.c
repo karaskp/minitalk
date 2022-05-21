@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:00:04 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/05/21 18:09:54 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/05/21 19:14:22 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_sendback(int pid, char c)
 	int	i;
 
 	i = -1;
-	while (++i < 9)
+	while (++i < 8)
 	{
 		if (c & 0x01)
 			kill(pid, SIGUSR2);
@@ -91,4 +91,5 @@ int	main(int ac, char **av)
 		ft_sendback(pid, strtobits[i]);
 	//send back to server with ft_sendback(pid, strtobits);
 	ft_sendback(pid, strtobits[i]);
+	exit(EXIT_SUCCESS);
 }

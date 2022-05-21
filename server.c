@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/05/21 18:15:13 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/05/21 19:13:05 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,6 @@ int	main(void)
 	signal(SIGUSR1, ft_server);
 	signal(SIGUSR2, ft_server);
 	while (1)
-		usleep(100);
+		pause();
+	return (0);
 }

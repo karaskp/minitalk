@@ -6,7 +6,7 @@
 #    By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/07 16:46:04 by mcouppe           #+#    #+#              #
-#    Updated: 2022/05/21 17:17:48 by mcouppe          ###   ########.fr        #
+#    Updated: 2022/05/21 18:54:25 by mcouppe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC = ft_printf/ft_print_hexa.c ft_printf/ft_print_int.c ft_printf/ft_print_maj_
 
 OBJ = $(SRC:.c=.o)
 
-CC = clang
+CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
