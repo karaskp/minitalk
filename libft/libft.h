@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 13:19:09 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/05/21 14:56:44 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/05/21 18:12:26 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "ft_printf.h"
 
 int		ft_atoi(char *str);
+int		ft_converttobit(int nb, int power);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_strlcpy(char *dst, char *src, int size);
@@ -51,6 +52,7 @@ void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_bzero(void *s, size_t n);
 void	ft_error(char *to_print);
 void	ft_putchar_fd(char c, int fd);
+void	ft_putendl_fd(char *s, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 

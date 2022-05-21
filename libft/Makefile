@@ -6,7 +6,7 @@
 #    By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/26 15:38:34 by mcouppe           #+#    #+#              #
-#    Updated: 2022/05/21 14:56:05 by mcouppe          ###   ########.fr        #
+#    Updated: 2022/05/21 18:17:18 by mcouppe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC = ft_atoi.c ft_isascii.c ft_isprint.c \
 	ft_split.c ft_printf.c ft_print_hexa.c \
 	ft_print_int.c ft_print_maj_hexa.c ft_print_p.c \
 	ft_print_un.c ft_printf_utils.c ft_binaryconvert.c \
-	ft_error.c
+	ft_error.c ft_putendl_fd.c
 
 
 OBJ = $(SRC:.c=.o)

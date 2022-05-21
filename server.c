@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/05/21 17:12:37 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/05/21 18:15:13 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 	sigusr1 == 0
 	sigusr2 == 1
 */
-char	*ft_addonechar(char *old, int bit)
+/*char	*ft_addonechar(char *old, int bit)
 {
 	int	i;
 	int	size;
@@ -39,32 +39,66 @@ char	*ft_addonechar(char *old, int bit)
 	new[i + 1] = '\0';
 	free(old);
 	return (new);
+}*/
+static void	ft_getlen(int *countbit, char **str, int *len, int signum)
+{
+	static int	len_bis;
+
+	len_bis = 0;
+	if (signum == SIGUSR2)
+		len_bis += ft_converttobit(2, *countbit);
+	if (*countbit == 31)
+	{
+		*len = 1;
+		*str = ft_calloc((len_bis + 1), (sizeof(char)));
+		*countbit = 0;
+		len_bis = 0;
+		return ;
+	}
+	(*countbit)++;
+}
+
+static void	ft_reset(int *len, char **str, int *i)
+{
+	*len = 0; 
+	if (str != NULL)
+	{
+		ft_putendl_fd(*str, 1);
+		free(*str);
+		*str = 0;
+	}
+	*i = 0;
 }
 
 void	ft_server(int signum)
 {
 	static char	*strinbits;
+	static int	charinbit;
 	static int	countbit;
+	static int	len;
+	static int	i;
 
-	countbit++;
-	if (strinbits == NULL)
-	{
-		countbit = 1;
-		strinbits = malloc(sizeof(char) * 1);
-		if (!strinbits)
-			return ;
-		strinbits = "";
-	}
-	if (signum == SIGUSR1)
-		strinbits = ft_addonechar(strinbits, 0);
+	countbit = 0;
+	len = 0;
+	i = 0;
+	strinbits = 0;
+	charinbit = 0;
+	if (!len)
+		ft_getlen(&countbit, &strinbits, &len, signum);
 	else
-		strinbits = ft_addonechar(strinbits, 1);
-	if (countbit == 8)
 	{
-		ft_printf("%c",ft_binarytoascii(strinbits, 0));
-		free(strinbits);
-		countbit = 0;
-		return ;
+		if (signum == SIGUSR2)
+			charinbit += ft_converttobit(2, countbit);
+		if (countbit == 7)
+		{
+			strinbits[i++] = charinbit;
+			countbit = 0;
+			if (charinbit == 0)
+				return (ft_reset(&len, &strinbits, &i));
+			charinbit = 0;
+			return ;
+		}
+		countbit++;
 	}
 }
 

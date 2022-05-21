@@ -6,13 +6,13 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:16:30 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/20 17:31:22 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/05/21 18:16:08 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	ft_binarytoascii(char *strinbits, int power)
+/*char	ft_binarytoascii(char *strinbits, int power)
 {
 	int	result;
 	int	power_tmp;
@@ -56,32 +56,30 @@ char	*asciitobinary(char *strtobits)
 	while (strtobits[i] != '\0')
 	{
 		bitstr = chartobinary(strtobits[i], bitstr);
-		/*
-			ici il faudrait que bitstr soit += chartobinary 
-			ou alors tab de char ** qu'on join apres
-		*/
 		i++;
 	//	j++;
 	}
 	//bitstr[j] = NULL;
 	free(strtobits);
 	return (bitstr);
-}
+}*/
 
+int	ft_converttobit(int nb, int power)
+{
+	if (power < 0)
+		return (0);
+	else if (power == 0)
+		return (1);
+	else
+		return (nb * ft_converttobit(nb, (power -1)));
+}
+/*
 char	*chartobinary(char c, char *binarystr)
 {
 	int	i;
 	int	nbr;
-/*
-	ou alors un truc qui test ici si binary == NULL ou non et si non on ajoute a la fin
-*/
 	nbr = (int)c;
 	i = 0;
-/*	if (c < 32 || c > 127)
-	{
-		ft_printf("error with char\n");
-		return (NULL);
-	}*/
 	while (nbr > 0 && i < 8)
 	{
 		if (nbr % 2 == 1)
@@ -93,4 +91,4 @@ char	*chartobinary(char c, char *binarystr)
 	}
 	binarystr[i] = '\0';
 	return (binarystr);
-}
+}*/

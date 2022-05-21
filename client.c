@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:00:04 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/05/21 17:12:45 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/05/21 18:09:54 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,27 @@ void	ft_sendback(int pid, char c)
 	}
 }
 
+void	ft_sendlen(int pid, int len)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 32)
+	{
+		if (len & 0x01)
+			kill(pid, SIGUSR2);
+		else
+			kill(pid, SIGUSR1);
+		len = len >> 1;
+		usleep(100);
+	}
+}
+
 int	main(int ac, char **av)
 {
-	int	pid;
+	int		pid;
+	int		i;
 	char	*strtobits;
-	int	i;
 
 	if (ac != 3)
 		return (-1);
@@ -69,7 +85,8 @@ int	main(int ac, char **av)
 	pid = ft_atoi(av[1]);
 	if (pid <= 0)
 		return (-1);
-	strtobits = asciitobinary(av[2]);
+	strtobits = av[2];
+	ft_sendlen(pid, (ft_strlen(strtobits)));
 	while (strtobits[++i])
 		ft_sendback(pid, strtobits[i]);
 	//send back to server with ft_sendback(pid, strtobits);
