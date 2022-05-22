@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:00:04 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/05/21 19:14:22 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/05/22 12:36:48 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,102 @@
         sleep (5);
     return (0);
 }*/
+
+static void	ft_receive(int signum)
+{
+	static int	received = 0;
+
+	if (signum == SIGUSR1)
+		++received;
+	else
+	{
+		ft_printf("%d\n", received);
+		exit(0);
+	}
+}
+
+/*static void	ft_sender_bychar(int pid_serv, unsigned char c)
+{
+	int	i;
+
+	i = 8;
+	while (i--)
+	{
+		if (c >> i & i)
+			kill(pid_serv, SIGUSR2);
+		else
+			kill(pid_serv, SIGUSR1);
+		pause();
+		usleep(200);
+	}
+}
+*/
+static void	ft_sender(int pid_serv, char *str)
+{
+	int	i;
+	char	c;
+
+	while (*str)
+	{
+		i = 8;
+		c = *str++;
+		while (i--)
+		{
+			if (c >> i & 1)
+				kill(pid_serv, SIGUSR2);
+			else
+				kill(pid_serv, SIGUSR1);
+			usleep(200);
+		}
+		i++;
+	}
+	i = 8;
+	while (i--)
+	{
+		kill(pid_serv, SIGUSR1);
+		usleep(200);
+	}
+}
+
+/*static int	check_pid(int pid_serv)
+{
+	int	i;
+
+	i = 8;
+	while (i-- && kill(pid_serv, SIGUSR1) == 0)
+	{
+		pause();
+		usleep(200);
+	}
+	return (i == -1);
+}*/
+
+int	main(int ac, char **av)
+{
+	unsigned int	pid_serv;
+
+	if (ac != 3)
+	{
+		ft_printf("Wrong args\n");
+		return (0);
+	}
+	pid_serv = ft_atoi(av[1]);
+	signal(SIGUSR1, ft_receive);
+	signal(SIGUSR2, ft_receive);
+/*	if (!check_pid(pid_serv))
+	{
+		ft_printf("Error in pid\n");
+		return (0);
+	}*/
+	ft_sender(pid_serv, av[2]);
+	while (1)
+		pause();
+	return (0);
+}
+
+/*
+
+		USING SIGNAL()///////////////////////////
 
 
 void	ft_sendback(int pid, char c)
@@ -92,4 +188,4 @@ int	main(int ac, char **av)
 	//send back to server with ft_sendback(pid, strtobits);
 	ft_sendback(pid, strtobits[i]);
 	exit(EXIT_SUCCESS);
-}
+}*/
