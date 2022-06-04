@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/05/22 13:43:20 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/06/04 13:40:37 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	ft_server(int signum, siginfo_t *info, void *context)
 {
 	static char	c = 0;
-	static int		i = 0;
+	static unsigned int		i = 0;
 	static pid_t		pid_client;
 
 	(void)context;

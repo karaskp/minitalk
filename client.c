@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:00:04 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/05/22 13:56:51 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/06/04 13:40:50 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	ft_receive(int signum)
 
 static void	ft_client(int pid_serv, char *str)
 {
-	int	i;
+	unsigned int	i;
 	char	c;
 
 	while (*str)
