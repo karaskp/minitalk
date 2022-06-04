@@ -6,7 +6,7 @@
 #    By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/07 16:46:04 by mcouppe           #+#    #+#              #
-#    Updated: 2022/05/21 18:54:25 by mcouppe          ###   ########.fr        #
+#    Updated: 2022/06/04 13:28:47 by mcouppe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,41 +14,43 @@ SERVER = server
 
 CLIENT = client
 
-SRC = ft_printf/ft_print_hexa.c ft_printf/ft_print_int.c ft_printf/ft_print_maj_hexa.c \
-	ft_printf/ft_print_p.c ft_printf/ft_print_un.c ft_printf/ft_printf.c ft_printf/utils.c \
-	server.c utils.c client.c utilsbis.c
+SRC_SERVER = server.c 
 
-OBJ = $(SRC:.c=.o)
+SRC_CLIENT = client.c
+
+OBJ_SERVER = $(SRC_SERVER:.c=.o)
+
+OBJ_CLIENT = $(SRC_CLIENT:.c=.o)
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+LIB = -Llibft -lft
 
-INCLUDE = -I.
+CFLAGS = -Wall -Werror -Wextra -I.
 
 RM = rm -f
 
 all :  $(SERVER) $(CLIENT)
 
-libft : 
+#%.o: %.c
+#	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+$(SERVER) :	$(OBJ_SERVER)
 	make -C libft
+	$(CC) $(CFLAGS) -o $(SERVER) $(OBJ_SERVER) $(LIB)
 
-%.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+$(CLIENT) :	$(OBJ_CLIENT)
+	make -C libft
+	$(CC) $(CFLAGS) -o $(CLIENT) $(OBJ_CLIENT) $(LIB)
 
-$(SERVER) : server.o libft
-	 $(CC) $(CFLAGS) -o $@ $< -Llibft -lft
-
-$(CLIENT) : client.o libft
-	$(CC) $(CFLAGS) -o $@ $< -Llibft -lft
-
-# need clean libft aswell
 clean :
-	$(RM) $(OBJ) ; cd libft/ ; make fclean
+	make -C libft clean
+	$(RM) $(OBJ_SERVER) $(OBJ_CLIENT)
 
-fclean : clean
+fclean : 	clean
+	make -C libft fclean
 	$(RM) $(SERVER) $(CLIENT)
 
 re : fclean all
 
-.PHONY : all clean fclean re libft
+.PHONY : all clean fclean re

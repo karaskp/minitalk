@@ -6,11 +6,11 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:46:01 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/03/10 12:37:29 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/06/04 13:17:48 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static int	lennbr(unsigned int nb)
 {

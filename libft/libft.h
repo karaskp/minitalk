@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 13:19:09 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/05/21 18:12:26 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/06/04 13:16:30 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,21 @@
 # include <stdlib.h>
 # include <stddef.h>
 # include <stdio.h>
-# include "ft_printf.h"
+# include <stdarg.h>
+//# include "ft_printf.h"
 
 int		ft_atoi(char *str);
 int		ft_converttobit(int nb, int power);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
+int		ft_printf(const char *str, ...);
+int		ft_print_int(int nb);
+int		ft_print_un(unsigned int nb);
+int		ft_print_hexa(unsigned int nb);
+int		ft_print_maj_hexa(unsigned int nb);
+int		ft_print_p(unsigned long long p);
+int		ft_printf_putstr(char *s);
+int		ft_putchar_augmented(char c);
 int		ft_strlcpy(char *dst, char *src, int size);
 int		ft_strlen(char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -51,10 +60,12 @@ void	*ft_calloc(size_t nmemb, size_t size);
 
 void	ft_bzero(void *s, size_t n);
 void	ft_error(char *to_print);
+void	ft_printf_putnbr(int nb);
+void	ft_printf_putchar(char c);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
-
+size_t	ft_printf_strlen(const char *s);
 #endif
