@@ -6,13 +6,13 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:00:04 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/06/04 15:42:50 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/06/05 19:10:32 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static void	ft_receive(int signum)
+static void	ft_sent(int signum)
 {
 	static int	received = 0;
 
@@ -63,8 +63,8 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	pid_serv = ft_atoi(av[1]);
-	signal(SIGUSR1, ft_receive);
-	signal(SIGUSR2, ft_receive);
+	signal(SIGUSR1, ft_sent);
+	signal(SIGUSR2, ft_sent);
 	ft_client(pid_serv, av[2]);
 	while (1)
 		pause();
