@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/06/05 19:16:10 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/07/03 16:33:00 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,7 @@ static void	ft_server(int signum, siginfo_t *info, void *context)
 		kill(pid_client, SIGUSR1);
 	}
 	else 
-	{
 		c = c << 1;
-	}
 }
 
 int	main(void)

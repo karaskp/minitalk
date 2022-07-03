@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:00:04 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/06/05 19:10:32 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/07/03 16:38:06 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ static void	ft_sent(int signum)
 		++received;
 	else
 	{
+		(void)signum;
 		ft_printf("%d\n", received);
 		exit(EXIT_SUCCESS);
 	}
-	(void)signum;
+//	(void)signum;
 }
 
 static void	ft_client(int pid_serv, char *str)
@@ -41,7 +42,7 @@ static void	ft_client(int pid_serv, char *str)
 				kill(pid_serv, SIGUSR2);
 			else
 				kill(pid_serv, SIGUSR1);
-			usleep(200);
+			usleep(1000);
 		}
 		i++;
 	}
@@ -49,7 +50,7 @@ static void	ft_client(int pid_serv, char *str)
 	while (i-- > 0)
 	{
 		kill(pid_serv, SIGUSR1);
-		usleep(200);
+		usleep(1000);
 	}
 }
 
@@ -59,8 +60,8 @@ int	main(int ac, char **av)
 
 	if (ac != 3)
 	{
-		ft_printf("Wrong args\n");
-		return (0);
+		ft_putendl_fd("Error with arguments", 2);
+		return (1);
 	}
 	pid_serv = ft_atoi(av[1]);
 	signal(SIGUSR1, ft_sent);
