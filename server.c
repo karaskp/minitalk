@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/07/03 16:33:00 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/07/04 16:23:48 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	ft_server(int signum, siginfo_t *info, void *context)
 {
-	static char	c = 0;
-	static unsigned int		i = 0;
+	static char			c = 0;
+	static unsigned int	i = 0;
 	static pid_t		pid_client;
 
 	(void)context;
@@ -36,7 +36,7 @@ static void	ft_server(int signum, siginfo_t *info, void *context)
 		c = 0;
 		kill(pid_client, SIGUSR1);
 	}
-	else 
+	else
 		c = c << 1;
 }
 

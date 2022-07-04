@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 12:11:32 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/05/22 13:42:09 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/07/04 16:20:24 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,5 @@
 # include <sys/types.h>
 # include <stddef.h>
 # include "libft/libft.h"
-
 
 #endif

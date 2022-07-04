@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:00:04 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/07/03 16:38:06 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/07/04 16:24:08 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void	ft_sent(int signum)
 		ft_printf("%d\n", received);
 		exit(EXIT_SUCCESS);
 	}
-//	(void)signum;
 }
 
 static void	ft_client(int pid_serv, char *str)

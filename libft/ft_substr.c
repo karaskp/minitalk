@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:23:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/04/20 17:27:56 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/07/04 16:25:13 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_substr(char *s, unsigned int start, int len)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*result;
 
 	i = start;
