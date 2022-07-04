@@ -6,7 +6,7 @@
 #    By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/07 16:46:04 by mcouppe           #+#    #+#              #
-#    Updated: 2022/06/04 13:28:47 by mcouppe          ###   ########.fr        #
+#    Updated: 2022/07/04 16:32:16 by mcouppe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,9 +31,6 @@ CFLAGS = -Wall -Werror -Wextra -I.
 RM = rm -f
 
 all :  $(SERVER) $(CLIENT)
-
-#%.o: %.c
-#	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(SERVER) :	$(OBJ_SERVER)
 	make -C libft
