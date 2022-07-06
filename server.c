@@ -6,26 +6,46 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/07/04 20:54:43 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/07/06 21:47:13 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+char	*join_one_char(char *str, char c)
+{
+	char	*result;
+	int		i;
+	int		check;
+
+	i = 0;
+	check = 0;
+	if (ft_strlen(str) == 0)
+		check++;
+	result = malloc(sizeof(char) * (ft_strlen(str) + 2));
+	if (!result)
+		return (NULL);
+	while (str && str[i])
+	{
+		result[i] = str[i];
+		i++;
+	}
+	result[i++] = c;
+	result[i] = '\0';
+	if (check == 0)
+		free(str);
+	return (result);
+}
+
 static void	ft_server(int signum, siginfo_t *info, void *context)
 {
 	static char			*str = "";
 	static char			c = 0;
-	static char			*tmp = "";
 	static unsigned int	i = 0;
 	static int		j = 0;
 	static pid_t		pid_client;
 
 	(void)context;
-/*	str = malloc(1 * 1);
-	if (!str)
-		return ;
-	str = '\0';*/
 	if (!pid_client)
 		pid_client = info->si_pid;
 	if (signum == SIGUSR2)
@@ -37,24 +57,12 @@ static void	ft_server(int signum, siginfo_t *info, void *context)
 		{
 			kill(pid_client, SIGUSR2);
 			pid_client = 0;
-		//	str[j] = '\0';
 			ft_printf("%s\n", str);
-			//free(str);
+			free(str);
 			str = "";
 			return ;
 		}
-		tmp = malloc(sizeof(char) * 2);
-		if (!tmp)
-			return ;
-		tmp[0] = c;
-		tmp[1] = '\0';
-/*
-		peut etre mieux avec un fonc ki reprend principe de strjoin mais juste pr un char 
-		et comme ca quand c '\0' on free et on repart
-*/
-		str = ft_strjoin(str, tmp);
-		free(tmp);
-	//	ft_printf("%c", c);
+		str = join_one_char(str, c);
 		j++;
 		c = 0;
 		kill(pid_client, SIGUSR1);
