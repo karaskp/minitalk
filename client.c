@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:00:04 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/07/04 20:49:15 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/07/08 11:36:29 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static void	ft_client(int pid_serv, char *str)
 			else
 				kill(pid_serv, SIGUSR1);
 			usleep(200);
-			usleep(200);
-			usleep(200);
-			usleep(200);
+		//	usleep(200);
+		//	usleep(200);
+		//	usleep(200);
 		}
 		i++;
 	}
@@ -53,9 +53,9 @@ static void	ft_client(int pid_serv, char *str)
 	{
 		kill(pid_serv, SIGUSR1);
 		usleep(200);
-		usleep(200);
-		usleep(200);
-		usleep(200);
+	//	usleep(200);
+	//	usleep(200);
+	//	usleep(200);
 
 	}
 }
@@ -70,6 +70,11 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	pid_serv = ft_atoi(av[1]);
+	if (pid_serv < 2)
+	{
+		ft_putendl_fd("Error with PID number", 2);
+		return (1);
+	}
 	signal(SIGUSR1, ft_sent);
 	signal(SIGUSR2, ft_sent);
 	ft_client(pid_serv, av[2]);
