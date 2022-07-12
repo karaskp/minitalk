@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:00:04 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/07/12 15:31:04 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/07/12 17:08:29 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ static void	ft_client(int pid_serv, char *str)
 	unsigned int	g;
 	unsigned int	i;
 	unsigned char	c;
-		
-	
+
 	g = -1;
 	while (str && str[++g])
 	{
@@ -44,7 +43,7 @@ static void	ft_client(int pid_serv, char *str)
 				kill(pid_serv, SIGUSR2);
 			else
 				kill(pid_serv, SIGUSR1);
-			usleep(450);		
+			usleep(450);
 		}
 		i++;
 	}

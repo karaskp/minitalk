@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 12:11:32 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/07/12 13:50:34 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/07/12 17:36:01 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@
 # include <stddef.h>
 # include "libft/libft.h"
 
-typedef struct	s_list
+typedef struct s_list
 {
-	char	charadd;
+	char			charadd;
 	struct s_list	*next;
 }	t_list;
 
 void	ft_lstclear(t_list **lst);
-int	    ft_lstsize(t_list *lst);
+int		ft_lstsize(t_list *lst);
 
 #endif
