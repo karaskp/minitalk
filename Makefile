@@ -6,7 +6,7 @@
 #    By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/07 16:46:04 by mcouppe           #+#    #+#              #
-#    Updated: 2022/07/06 20:45:03 by mcouppe          ###   ########.fr        #
+#    Updated: 2022/07/12 12:52:44 by mcouppe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SERVER = server
 
 CLIENT = client
 
-SRC_SERVER = server.c 
+SRC_SERVER = server.c tools/ft_lstclear.c tools/ft_lstsize.c
 
 SRC_CLIENT = client.c
 

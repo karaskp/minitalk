@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 12:11:32 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/07/12 12:54:52 by mcouppe          ###   ########.fr       */
+/*   Created: 2021/12/28 17:24:36 by mcouppe           #+#    #+#             */
+/*   Updated: 2022/07/12 12:53:03 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <signal.h>
-# include <sys/types.h>
-# include <stddef.h>
-# include "libft/libft.h"
-
-typedef struct	s_list
+void	ft_lstclear(t_list **lst)
 {
-	char	charadd;
-	struct s_list	*next;
-}	t_list;
+	t_list	*lst_tmp;
 
-void	ft_lstclear(t_list **lst);
-int	ft_lstsize(t_list *lst);
-
-#endif
+	lst_tmp = *lst;
+	if (!lst)
+		return ;
+	while (*lst != NULL)
+	{
+		lst_tmp = (*lst)->next;
+		//del((*lst)->content);
+		free((*lst));
+		(*lst) = lst_tmp;
+	}
+}
