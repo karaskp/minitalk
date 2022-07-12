@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:00:04 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/07/12 11:35:42 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/07/12 15:31:04 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,23 @@ static void	ft_sent(int signum)
 
 static void	ft_client(int pid_serv, char *str)
 {
+	unsigned int	g;
 	unsigned int	i;
 	unsigned char	c;
-
-	while (*str)
+		
+	
+	g = -1;
+	while (str && str[++g])
 	{
 		i = 8;
-		c = *str++;
+		c = str[g];
 		while (i-- > 0)
 		{
 			if (c >> i & 1)
 				kill(pid_serv, SIGUSR2);
 			else
 				kill(pid_serv, SIGUSR1);
-		//	usleep(400);
-			usleep(1000);
-		//	usleep(200);
-		//	usleep(200);
+			usleep(450);		
 		}
 		i++;
 	}
@@ -52,11 +52,7 @@ static void	ft_client(int pid_serv, char *str)
 	while (i-- > 0)
 	{
 		kill(pid_serv, SIGUSR1);
-	//	usleep(400);
-		usleep(1000);
-	//	usleep(200);
-	//	usleep(200);
-
+		usleep(450);
 	}
 }
 

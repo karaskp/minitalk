@@ -6,7 +6,7 @@
 #    By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/07 16:46:04 by mcouppe           #+#    #+#              #
-#    Updated: 2022/07/12 12:52:44 by mcouppe          ###   ########.fr        #
+#    Updated: 2022/07/12 13:49:50 by mcouppe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ SERVER = server
 
 CLIENT = client
 
-SRC_SERVER = server.c tools/ft_lstclear.c tools/ft_lstsize.c
+SRC_SERVER = old_server.c \
+			tools/ft_lstsize.c \
+			tools/ft_lstclear.c 
 
 SRC_CLIENT = client.c
 
@@ -30,7 +32,7 @@ CC = gcc
 
 LIB = -Llibft -lft
 
-CFLAGS = -Wall -Werror -Wextra -I.
+CFLAGS = -g3 -Wall -Werror -Wextra -I.
 
 RM = rm -f
 

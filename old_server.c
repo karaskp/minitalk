@@ -6,55 +6,74 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/07/12 15:32:03 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/07/12 13:46:45 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-char	*join_one_char(char *str, char c)
+t_list	*ft_lstnew(char c)
 {
-	char	*result;
-	int		i;
-	int		check;
+	t_list	*lst;
 
-	i = 0;
-	check = 0;
-	if (ft_strlen(str) == 0)
-		check++;
-	result = malloc(sizeof(char) * (ft_strlen(str) + 2));
-	if (!result)
+	lst = malloc(sizeof(t_list));
+	if (!lst)
 		return (NULL);
-	while (str && str[i])
-	{
-		result[i] = str[i];
-		i++;
-	}
-	result[i++] = c;
-	result[i] = '\0';
-	if (check == 0)
-		free(str);
-	return (result);
+	lst->next = NULL;
+	lst->charadd = c;
+	return (lst);
 }
 
-char	*print_n_free(char *str, int pid)
+void	ft_lstadd(t_list **lst, t_list *last, t_list *new)
 {
-	kill(pid, SIGUSR2);
-	ft_printf("%s\n", str);
-	free(str);
-	return ("");
+	t_list	*head;
+
+	head = *lst;
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	if (last != NULL)
+		head = last;
+	while (head->next != NULL)
+		head = head->next;
+	head->next = new;
+	last = new;
+}
+
+char	*ft_getlst(t_list *lst)
+{
+	char	*result;
+	int		size;
+	int		i;
+
+	size = ft_lstsize(lst);
+	i = 0;
+	result = malloc(sizeof(char) * (size + 1));
+	if (!result)
+		return (NULL);
+	while (lst != NULL)
+	{
+		result[i++] = lst->charadd;
+		lst = lst->next;
+	}
+	result[i] = '\0';
+	return (result);
 }
 
 static void	ft_server(int signum, siginfo_t *info, void *context)
 {
-	static char			*str = "";
 	static char			c = 0;
-	static unsigned int		i = 0;
-	static pid_t			pid;
+	static unsigned int	i = 0;
+	static pid_t		pid_client;
+	static t_list	*head = NULL;
+	static t_list	*last = NULL;
+	char	*print;
 
 	(void)context;
-	if (!pid)
-		pid = info->si_pid;
+	if (!pid_client)
+		pid_client = info->si_pid;
 	if (signum == SIGUSR2)
 		c |= 1;
 	if (++i == 8)
@@ -62,13 +81,19 @@ static void	ft_server(int signum, siginfo_t *info, void *context)
 		i = 0;
 		if (c == 0)
 		{
-			str = print_n_free(str, pid);
-			pid = 0;
+			kill(pid_client, SIGUSR2);
+			pid_client = 0;
+			print = ft_getlst(head);
+			ft_printf("%s\n", print);
+			free(print);
+			ft_lstclear(&head);
+			last = NULL;
+			head = NULL;
 			return ;
 		}
-		str = join_one_char(str, c);
+		ft_lstadd(&head, last, ft_lstnew(c));	
 		c = 0;
-		kill(pid, SIGUSR1);
+		kill(pid_client, SIGUSR1);
 	}
 	else
 		c = c << 1;
