@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/07/06 22:14:43 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/07/12 11:10:11 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*join_one_char(char *str, char c)
 
 static void	ft_server(int signum, siginfo_t *info, void *context)
 {
-	static char			*str = "";
+	static char			*str;
 	static char			c = 0;
 	static unsigned int	i = 0;
 	static int		j = 0;
