@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/07/12 17:32:30 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/07/12 18:31:38 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,27 +42,27 @@ void	ft_lstadd(t_list **lst, t_list *last, t_list *new)
 	last = new;
 }
 
-int	ft_getlst(t_list **lst, int pid_client, t_list **last)
+int	ft_getlst(t_list *lst, int pid_client, t_list **last, t_list **head)
 {
 	char	*result;
 	int		size;
 	int		i;
 
-	size = ft_lstsize((*lst));
+	size = ft_lstsize(lst);
 	i = 0;
 	result = malloc(sizeof(char) * (size + 1));
 	if (!result)
 		return (1);
-	while (*lst != NULL)
+	while (lst != NULL)
 	{
-		result[i++] = (*lst)->charadd;
-		*lst = (*lst)->next;
+		result[i++] = lst->charadd;
+		lst = lst->next;
 	}
 	result[i] = '\0';
 	ft_putendl_fd(result, 1);
 	free(result);
 	kill(pid_client, SIGUSR2);
-	ft_lstclear(lst);
+	ft_lstclear(head);
 	*last = NULL;
 	return (0);
 }
@@ -85,7 +85,7 @@ static void	ft_server(int signum, siginfo_t *info, void *context)
 		i = 0;
 		if (c == 0)
 		{
-			pid_client = ft_getlst(&head, pid_client, &last);
+			pid_client = ft_getlst(&head, pid_client, &last, &head);
 			return ;
 		}
 		ft_lstadd(&head, last, ft_lstnew(c));
