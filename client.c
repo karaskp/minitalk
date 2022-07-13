@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:00:04 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/07/13 20:37:56 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/07/13 20:50:12 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	ft_client(int pid_serv, char *str)
 
 int	main(int ac, char **av)
 {
-	unsigned int	pid_serv;
+	int	pid_serv;
 
 	if (ac != 3)
 	{
