@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:00:04 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/07/12 17:08:29 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/07/13 20:37:56 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ static void	ft_client(int pid_serv, char *str)
 				kill(pid_serv, SIGUSR2);
 			else
 				kill(pid_serv, SIGUSR1);
-			usleep(450);
+			usleep(150);
+	//		usleep(200);
+	//		usleep(200);
+	//		usleep(200);
 		}
 		i++;
 	}
@@ -51,7 +54,10 @@ static void	ft_client(int pid_serv, char *str)
 	while (i-- > 0)
 	{
 		kill(pid_serv, SIGUSR1);
-		usleep(450);
+		usleep(150);
+	//	usleep(200);
+	//	usleep(200);
+	//	usleep(200);
 	}
 }
 
@@ -73,7 +79,6 @@ int	main(int ac, char **av)
 	signal(SIGUSR1, ft_sent);
 	signal(SIGUSR2, ft_sent);
 	ft_client(pid_serv, av[2]);
-	while (1)
-		pause();
+	while (1);
 	return (0);
 }

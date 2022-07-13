@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:59:34 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/07/12 18:31:38 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/07/13 19:21:45 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	ft_server(int signum, siginfo_t *info, void *context)
 		i = 0;
 		if (c == 0)
 		{
-			pid_client = ft_getlst(&head, pid_client, &last, &head);
+			pid_client = ft_getlst(head, pid_client, &last, &head);
 			return ;
 		}
 		ft_lstadd(&head, last, ft_lstnew(c));
@@ -106,7 +106,6 @@ int	main(void)
 	ft_printf("PID : %d\n", getpid());
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
-	while (1)
-		pause();
+	while (1);
 	return (0);
 }
